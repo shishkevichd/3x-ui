@@ -1,5 +1,4 @@
 class AllSetting {
-
     constructor(data) {
         this.webListen = "";
         this.webDomain = "";
@@ -7,6 +6,7 @@ class AllSetting {
         this.webCertFile = "";
         this.webKeyFile = "";
         this.webBasePath = "/";
+        this.webTitleTemplate = "#ip# - #title#";
         this.sessionMaxAge = 60;
         this.pageSize = 50;
         this.expireDiff = 0;

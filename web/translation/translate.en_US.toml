@@ -287,6 +287,8 @@
 "panelSettings" = "General"
 "securitySettings" = "Authentication"
 "TGBotSettings" = "Telegram Bot"
+"panelTitleModel" = "Title Model"
+"panelTitleModelDesc" = "Title template for the pages"
 "panelListeningIP" = "Listen IP"
 "panelListeningIPDesc" = "The IP address for the web panel. (leave blank to listen on all IPs)"
 "panelListeningDomain" = "Listen Domain"

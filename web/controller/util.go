@@ -8,6 +8,7 @@ import (
 	"x-ui/config"
 	"x-ui/logger"
 	"x-ui/web/entity"
+	"x-ui/web/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,6 +26,34 @@ func getRemoteIp(c *gin.Context) string {
 	addr := c.Request.RemoteAddr
 	ip, _, _ := net.SplitHostPort(addr)
 	return ip
+}
+
+func getWebTitle(c *gin.Context, pageTitle string) string {
+	settingService := service.SettingService{}
+
+	titleTemplate, err := settingService.GetTitleTemplate()
+
+	if err != nil || strings.TrimSpace(titleTemplate) == "" {
+		titleTemplate = "#ip# - #title#"
+	}
+
+	titleTemplate = strings.ReplaceAll(titleTemplate, "#title#", I18nWeb(c, pageTitle))
+
+	host := c.GetHeader("X-Forwarded-Host")
+	if host == "" {
+		host = c.GetHeader("X-Real-IP")
+	}
+	if host == "" {
+		var err error
+		host, _, err = net.SplitHostPort(c.Request.Host)
+		if err != nil {
+			host = c.Request.Host
+		}
+	}
+
+	titleTemplate = strings.ReplaceAll(titleTemplate, "#ip#", host)
+
+	return titleTemplate
 }
 
 func jsonMsg(c *gin.Context, msg string, err error) {
@@ -63,21 +92,11 @@ func html(c *gin.Context, name string, title string, data gin.H) {
 	if data == nil {
 		data = gin.H{}
 	}
-	data["title"] = title
-	host := c.GetHeader("X-Forwarded-Host")
-	if host == "" {
-		host = c.GetHeader("X-Real-IP")
-	}
-	if host == "" {
-		var err error
-		host, _, err = net.SplitHostPort(c.Request.Host)
-		if err != nil {
-			host = c.Request.Host
-		}
-	}
-	data["host"] = host
+	
+	data["title"] = getWebTitle(c, title)
 	data["request_uri"] = c.Request.RequestURI
 	data["base_path"] = c.GetString("base_path")
+
 	c.HTML(http.StatusOK, name, getContext(data))
 }
 

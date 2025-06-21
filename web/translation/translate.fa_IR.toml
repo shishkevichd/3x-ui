@@ -290,6 +290,8 @@
 "panelSettings" = "پیکربندی"
 "securitySettings" = "احرازهویت"
 "TGBotSettings" = "ربات تلگرام"
+"panelTitleModel" = "الگوی عنوان"
+"panelTitleModelDesc" = "قالب عنوان برای صفحات"
 "panelListeningIP" = "آدرس آی‌پی"
 "panelListeningIPDesc" = "آدرس آی‌پی برای وب پنل. برای گوش‌دادن به‌تمام آی‌پی‌ها خالی‌بگذارید"
 "panelListeningDomain" = "نام دامنه"

@@ -30,6 +30,7 @@ var defaultValueMap = map[string]string{
 	"webPort":                     "2053",
 	"webCertFile":                 "",
 	"webKeyFile":                  "",
+	"webTitleTemplate":            "#ip# - #title#",
 	"secret":                      random.Seq(32),
 	"webBasePath":                 "/",
 	"sessionMaxAge":               "60",
@@ -348,6 +349,14 @@ func (s *SettingService) SetKeyFile(webKeyFile string) error {
 
 func (s *SettingService) GetKeyFile() (string, error) {
 	return s.getString("webKeyFile")
+}
+
+func (s *SettingService) SetTitleTemplate(titleTemplate string) error {
+	return s.setString("webTitleTemplate", titleTemplate)
+}
+
+func (s *SettingService) GetTitleTemplate() (string, error) {
+	return s.getString("webTitleTemplate")
 }
 
 func (s *SettingService) GetExpireDiff() (int, error) {

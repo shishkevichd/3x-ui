@@ -292,6 +292,8 @@
 "panelSettings" = "常規"
 "securitySettings" = "安全設定"
 "TGBotSettings" = "Telegram 機器人配置"
+"panelTitleModel" = "標題範本"
+"panelTitleModelDesc" = "頁面的標題範本"
 "panelListeningIP" = "面板監聽 IP"
 "panelListeningIPDesc" = "預設留空監聽所有 IP"
 "panelListeningDomain" = "面板監聽域名"

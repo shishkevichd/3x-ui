@@ -2,6 +2,13 @@
 <a-collapse default-active-key="1">
     <a-collapse-panel key="1" header='{{ i18n "pages.xray.generalConfigs"}}'>
         <a-setting-list-item paddings="small">
+            <template #title>{{ i18n "pages.settings.panelTitleModel" }}</template>
+            <template #description>{{ i18n "pages.settings.panelTitleModelDesc" }}</template>
+            <template #control>
+                <a-input type="text" v-model="allSetting.webTitleTemplate"></a-input>
+            </template>
+        </a-setting-list-item>
+        <a-setting-list-item paddings="small">
             <template #title>
                 {{ i18n "pages.settings.remarkModel"}}
             </template>

@@ -290,6 +290,8 @@
 "panelSettings" = "Geral"
 "securitySettings" = "Autenticação"
 "TGBotSettings" = "Bot do Telegram"
+"panelTitleModel" = "Modelo de título"
+"panelTitleModelDesc" = "Modelo de título para as páginas"
 "panelListeningIP" = "IP de Escuta"
 "panelListeningIPDesc" = "O endereço IP para o painel web. (deixe em branco para escutar em todos os IPs)"
 "panelListeningDomain" = "Domínio de Escuta"

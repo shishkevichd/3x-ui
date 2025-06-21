@@ -290,6 +290,8 @@
 "panelSettings" = "Umum"
 "securitySettings" = "Otentikasi"
 "TGBotSettings" = "Bot Telegram"
+"panelTitleModel" = "Template judul"
+"panelTitleModelDesc" = "Template judul untuk halaman"
 "panelListeningIP" = "IP Pendengar"
 "panelListeningIPDesc" = "Alamat IP untuk panel web. (biarkan kosong untuk mendengarkan semua IP)"
 "panelListeningDomain" = "Domain Pendengar"

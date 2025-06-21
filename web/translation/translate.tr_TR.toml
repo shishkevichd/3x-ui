@@ -290,6 +290,8 @@
 "panelSettings" = "Genel"
 "securitySettings" = "Kimlik Doğrulama"
 "TGBotSettings" = "Telegram Bot"
+"panelTitleModel" = "Başlık şablonu"
+"panelTitleModelDesc" = "Sayfalar için başlık şablonu"
 "panelListeningIP" = "Dinleme IP"
 "panelListeningIPDesc" = "Web paneli için IP adresi. (tüm IP'leri dinlemek için boş bırakın)"
 "panelListeningDomain" = "Dinleme Alan Adı"

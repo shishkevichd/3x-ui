@@ -288,6 +288,8 @@
 "panelSettings" = "عام"
 "securitySettings" = "المصادقة"
 "TGBotSettings" = "بوت Telegram"
+"panelTitleModel" = "نموذج العنوان"
+"panelTitleModelDesc" = "قالب العنوان للصفحات"
 "panelListeningIP" = "IP الاستماع"
 "panelListeningIPDesc" = "عنوان IP للبانل. (سيبه فاضي عشان يستمع على كل الـ IPs)"
 "panelListeningDomain" = "دومين الاستماع"

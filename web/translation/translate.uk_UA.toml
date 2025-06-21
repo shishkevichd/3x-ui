@@ -290,6 +290,8 @@
 "panelSettings" = "Загальні"
 "securitySettings" = "Автентифікація"
 "TGBotSettings" = "Telegram Бот"
+"panelTitleModel" = "Шаблон заголовка"
+"panelTitleModelDesc" = "Шаблон заголовків для сторінок"
 "panelListeningIP" = "Слухати IP"
 "panelListeningIPDesc" = "IP-адреса для веб-панелі. (залиште порожнім, щоб слухати всі IP-адреси)"
 "panelListeningDomain" = "Домен прослуховування"

@@ -290,6 +290,8 @@
 "panelSettings" = "一般"
 "securitySettings" = "セキュリティ設定"
 "TGBotSettings" = "Telegramボット設定"
+"panelTitleModel" = "タイトルテンプレート"
+"panelTitleModelDesc" = "ページのタイトルテンプレート"
 "panelListeningIP" = "パネル監視IP"
 "panelListeningIPDesc" = "デフォルトではすべてのIPを監視する"
 "panelListeningDomain" = "パネル監視ドメイン"

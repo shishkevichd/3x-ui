@@ -290,6 +290,8 @@
 "panelSettings" = "Bảng điều khiển"
 "securitySettings" = "Bảo mật"
 "TGBotSettings" = "Bot Telegram"
+"panelTitleModel" = "Mẫu tiêu đề"
+"panelTitleModelDesc" = "Mẫu tiêu đề cho các trang"
 "panelListeningIP" = "IP Nghe của bảng điều khiển"
 "panelListeningIPDesc" = "Mặc định để trống để nghe tất cả các IP."
 "panelListeningDomain" = "Tên miền của nghe bảng điều khiển"

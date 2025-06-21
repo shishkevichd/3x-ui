@@ -290,6 +290,8 @@
 "panelSettings" = "Configuraciones del Panel"
 "securitySettings" = "Configuraciones de Seguridad"
 "TGBotSettings" = "Configuraciones de Bot de Telegram"
+"panelTitleModel" = "Plantilla de título"
+"panelTitleModelDesc" = "Plantilla de título para las páginas"
 "panelListeningIP" = "IP de Escucha del Panel"
 "panelListeningIPDesc" = "Dejar en blanco por defecto para monitorear todas las IPs."
 "panelListeningDomain" = "Dominio de Escucha del Panel"
