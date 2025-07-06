@@ -116,14 +116,16 @@
                 <a-switch v-model="allSetting.externalTrafficInformEnable"></a-switch>
             </template>
         </a-setting-list-item>
-        <a-setting-list-item paddings="small">
-            <template #title>{{ i18n "pages.settings.externalTrafficInformURI"}}</template>
-            <template #description>{{ i18n "pages.settings.externalTrafficInformURIDesc"}}</template>
-            <template #control>
-                <a-input type="text" placeholder="(http|https)://domain[:port]/path/"
-                    v-model="allSetting.externalTrafficInformURI"></a-input>
-            </template>
-        </a-setting-list-item>
+        <template v-if="allSetting.externalTrafficInformEnable"> 
+            <a-setting-list-item paddings="small">
+                <template #title>{{ i18n "pages.settings.externalTrafficInformURI"}}</template>
+                <template #description>{{ i18n "pages.settings.externalTrafficInformURIDesc"}}</template>
+                <template #control>
+                    <a-input type="text" placeholder="(http|https)://domain[:port]/path/"
+                        v-model="allSetting.externalTrafficInformURI"></a-input>
+                </template>
+            </a-setting-list-item>
+        </template>
     </a-collapse-panel>
     <a-collapse-panel key="5" header='{{ i18n "pages.settings.dateAndTime" }}'>
         <a-setting-list-item paddings="small">
