@@ -37,7 +37,6 @@ func (a *IndexController) initRouter(g *gin.RouterGroup) {
 	g.GET("/", a.index)
 	g.POST("/login", a.login)
 	g.GET("/logout", a.logout)
-	g.POST("/getTwoFactorEnable", a.getTwoFactorEnable)
 }
 
 func (a *IndexController) index(c *gin.Context) {
@@ -45,7 +44,14 @@ func (a *IndexController) index(c *gin.Context) {
 		c.Redirect(http.StatusTemporaryRedirect, "panel/")
 		return
 	}
-	html(c, "login.html", "pages.login.title", nil)
+	
+	var loginData = gin.H{}
+	
+	twoFactorEnable, err := a.settingService.GetTwoFactorEnable()
+
+	loginData["two_factor_enable"] = err == nil && twoFactorEnable
+
+	html(c, "login.html", "pages.login.title", loginData)
 }
 
 func (a *IndexController) login(c *gin.Context) {
@@ -105,11 +111,4 @@ func (a *IndexController) logout(c *gin.Context) {
 		logger.Warning("Unable to save session after clearing:", err)
 	}
 	c.Redirect(http.StatusTemporaryRedirect, c.GetString("base_path"))
-}
-
-func (a *IndexController) getTwoFactorEnable(c *gin.Context) {
-	status, err := a.settingService.GetTwoFactorEnable()
-	if err == nil {
-		jsonObj(c, status, nil)
-	}
 }

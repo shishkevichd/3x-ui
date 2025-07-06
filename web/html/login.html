@@ -550,12 +550,11 @@
         password: "",
         twoFactorCode: ""
       },
-      twoFactorEnable: false,
+      twoFactorEnable: "{{ .two_factor_enable }}" === "true",
       lang: ""
     },
     async mounted() {
       this.lang = LanguageManager.getLanguage();
-      this.twoFactorEnable = await this.getTwoFactorEnable();
     },
     methods: {
       async login() {
@@ -565,16 +564,7 @@
         if (msg.success) {
           location.href = basePath + 'panel/';
         }
-      },
-      async getTwoFactorEnable() {
-        this.loading = true;
-        const msg = await HttpUtil.post('/getTwoFactorEnable');
-        this.loading = false;
-        if (msg.success) {
-          this.twoFactorEnable = msg.obj;
-          return msg.obj;
-        }
-      },
+      }
     },
   });
 
