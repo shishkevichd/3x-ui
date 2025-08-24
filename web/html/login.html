@@ -506,24 +506,24 @@
             </a-row>
             <a-row type="flex" justify="center">
               <a-col span="24">
-                <a-form>
+                <a-form @submit.prevent="login">
                   <a-space direction="vertical" size="middle">
                     <a-form-item>
-                      <a-input autocomplete="username" name="username" v-model.trim="user.username"
-                        placeholder='{{ i18n "username" }}' @keydown.enter.native="login" autofocus>
-                        <a-icon slot="prefix" type="user" :style="{ fontSize: '1rem' }"></a-icon>
+                      <a-input autocomplete="username" name="username" v-model.trim="form.username"
+                        placeholder='{{ i18n "username" }}' required autofocus>
+                        <a-icon slot="prefix" type="user"></a-icon>
                       </a-input>
                     </a-form-item>
                     <a-form-item>
-                      <a-input-password autocomplete="password" name="password" v-model.trim="user.password"
-                        placeholder='{{ i18n "password" }}' @keydown.enter.native="login">
-                        <a-icon slot="prefix" type="lock" :style="{ fontSize: '1rem' }"></a-icon>
+                      <a-input-password autocomplete="password" name="password" v-model.trim="form.password"
+                        placeholder='{{ i18n "password" }}' required>
+                        <a-icon slot="prefix" type="lock"></a-icon>
                       </a-input-password>
                     </a-form-item>
                     <a-form-item v-if="twoFactorEnable">
-                      <a-input autocomplete="totp" name="twoFactorCode" v-model.trim="user.twoFactorCode"
-                        placeholder='{{ i18n "twoFactorCode" }}' @keydown.enter.native="login">
-                        <a-icon slot="prefix" type="key" :style="{ fontSize: '1rem' }"></a-icon>
+                      <a-input autocomplete="totp" name="twoFactorCode" v-model.trim="form.twoFactorCode"
+                        placeholder='{{ i18n "twoFactorCode" }}' required minlength="6" maxlength="6" pattern="[0-9]+">
+                        <a-icon slot="prefix" type="key"></a-icon>
                       </a-input>
                     </a-form-item>
                     <a-form-item>
@@ -531,8 +531,8 @@
                         <div
                           :style="{ height: '50px', marginTop: '1rem', ...loadingStates.spinning ? { width: '52px' } : { display: 'inline-block' } }"
                           class="wave-btn-bg wave-btn-bg-cl">
-                          <a-button class="ant-btn-primary-login" type="primary" :loading="loadingStates.spinning" @click="login"
-                            :icon="loadingStates.spinning ? 'poweroff' : undefined">
+                          <a-button class="ant-btn-primary-login" type="primary" :loading="loadingStates.spinning"
+                            html-type="submit" :icon="loadingStates.spinning ? 'poweroff' : undefined">
                             [[ loadingStates.spinning ? '' : '{{ i18n "login" }}' ]]
                           </a-button>
                         </div>
@@ -560,7 +560,7 @@
         fetched: false,
         spinning: false
       },
-      user: {
+      form: {
         username: "",
         password: "",
         twoFactorCode: ""
@@ -575,7 +575,7 @@
     methods: {
       async login() {
         this.loadingStates.spinning = true;
-        const msg = await HttpUtil.post('/login', this.user);
+        const msg = await HttpUtil.post('/login', this.form);
         this.loadingStates.spinning = false;
         if (msg.success) {
           location.href = basePath + 'panel/';
