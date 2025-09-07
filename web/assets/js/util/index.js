@@ -847,6 +847,73 @@ class LanguageManager {
     }
 }
 
+class DatetimeUtil {
+    static formatDate(datepicker = "gregorian", date) {
+        console.log(`${date} ==> ${new Date(date)}`)
+
+        let language = datepicker === "jalalian" ? "fa-IR" : LanguageManager.getLanguage()
+
+        return Intl
+            .DateTimeFormat(
+                language,
+                {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                }
+            )
+            .format(
+                new Date(date)
+            )
+    }
+
+    static relativeFormatDate(datepicker = "gregorian", date) {
+        console.log(`${date} ==> ${new Date(date)}`)
+
+        let language = datepicker === "jalalian" ? "fa-IR" : LanguageManager.getLanguage();
+    
+        const now = new Date();
+        const targetDate = new Date(date);
+        const secondsDiff = Math.floor((targetDate - now) / 1000);
+        
+        const rtf = new Intl.RelativeTimeFormat(language, { numeric: 'auto' });
+
+        if (secondsDiff > 0) {
+            if (secondsDiff < 60) {
+                return rtf.format(Math.ceil(secondsDiff), 'second');
+            } else if (secondsDiff < 3600) {
+                return rtf.format(Math.ceil(secondsDiff / 60), 'minute');
+            } else if (secondsDiff < 86400) {
+                return rtf.format(Math.ceil(secondsDiff / 3600), 'hour');
+            } else if (secondsDiff < 604800) {
+                return rtf.format(Math.ceil(secondsDiff / 86400), 'day');
+            } else if (secondsDiff < 2419200) {
+                return rtf.format(Math.ceil(secondsDiff / 604800), 'week');
+            } else {
+                return rtf.format(Math.ceil(secondsDiff / 2419200), 'month');
+            }
+        } else {
+            const absSecondsDiff = Math.abs(secondsDiff);
+            if (absSecondsDiff < 60) {
+                return rtf.format(-Math.floor(absSecondsDiff), 'second');
+            } else if (absSecondsDiff < 3600) {
+                return rtf.format(-Math.floor(absSecondsDiff / 60), 'minute');
+            } else if (absSecondsDiff < 86400) {
+                return rtf.format(-Math.floor(absSecondsDiff / 3600), 'hour');
+            } else if (absSecondsDiff < 604800) {
+                return rtf.format(-Math.floor(absSecondsDiff / 86400), 'day');
+            } else if (absSecondsDiff < 2419200) {
+                return rtf.format(-Math.floor(absSecondsDiff / 604800), 'week');
+            } else {
+                return rtf.format(-Math.floor(absSecondsDiff / 2419200), 'month');
+            }
+        }
+    }
+}
+
 const MediaQueryMixin = {
     data() {
         return {
